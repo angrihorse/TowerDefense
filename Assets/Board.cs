@@ -13,11 +13,16 @@ public class Board : MonoBehaviour
 	public Tile tilePrefab;
 	public Tile[,] tiles;
 
-	public TileContentType destination;
+	public ContentTypes contentTypes;
 	public Paths paths;
 
 	public delegate void BoardStateChangeEvent();
 	public static event BoardStateChangeEvent onPathUpdate;
+
+	public LayerMask enemyLayer;
+
+	public ParticleSystem placementPoof;
+	public ParticleSystem breakPoof;
 
     // Start is called before the first frame update
     void Start()
@@ -40,11 +45,16 @@ public class Board : MonoBehaviour
 			return;
 		}
 
-		if (tile.Content == destination) {
+		if (tile.Content == contentTypes.destination) {
 			paths.destinations.Remove(tile);
 		}
 
-		if (!tile.walkable || tile.Content == destination) {
+		if (breakPoof != null) {
+			ParticleSystem poofInstance = Instantiate(breakPoof, tile.transform.localPosition, Quaternion.identity);
+			Destroy(poofInstance.gameObject, breakPoof.main.startLifetime.constant);
+		}
+
+		if (!tile.walkable || tile.Content == contentTypes.destination) {
 			tile.Content = null;
 			BreadthFirstSearch();
 			return;
@@ -54,18 +64,33 @@ public class Board : MonoBehaviour
 	}
 
 	public void SetTile(Ray touchRay, TileContentType content) {
+		// Check if setting tile is possible.
 		Tile tile = TileFromRay(touchRay);
 		if (tile == null || tile.Content != null) {
 			return;
 		}
 
+		// Return if tile has enemies.
+		Collider[] enemyColliders = Physics.OverlapSphere(tile.transform.position, tile.transform.localScale.x/2 - 0.01f, enemyLayer);
+		if (enemyColliders.Length > 0) {
+			return;
+		}
+
+		// Set tile content.
 		tile.Set(content);
-		if (content == destination) {
+		if (content == contentTypes.destination) {
 			paths.destinations.Add(tile);
 		}
 
-		if (!tile.walkable || tile.Content == destination) {
+		// Update paths if necessary.
+		if (!tile.walkable || tile.Content == contentTypes.destination) {
 			BreadthFirstSearch();
+		}
+
+		// Add placementPoof effect.
+		if (placementPoof != null) {
+			ParticleSystem poofInstance = Instantiate(placementPoof, tile.transform.localPosition, Quaternion.identity);
+			Destroy(poofInstance.gameObject, placementPoof.main.startLifetime.constant);
 		}
 	}
 

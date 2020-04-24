@@ -149,7 +149,7 @@ Light:
   serializedVersion: 10
   m_Type: 1
   m_Shape: 0
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.73333335, g: 0.87058824, b: 0.9843137, a: 1}
   m_Intensity: 1
   m_Range: 10
   m_SpotAngle: 30
@@ -159,7 +159,7 @@ Light:
     m_Type: 2
     m_Resolution: -1
     m_CustomResolution: -1
-    m_Strength: 1
+    m_Strength: 0.2
     m_Bias: 0.05
     m_NormalBias: 0.4
     m_NearPlane: 0.2
@@ -249,8 +249,8 @@ Camera:
   m_GameObject: {fileID: 963194225}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_ClearFlags: 2
+  m_BackGroundColor: {r: 0.12941177, g: 0.12941177, b: 0.12941177, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -267,7 +267,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 0
-  orthographic size: 5
+  orthographic size: 6
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -310,9 +310,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   board: {fileID: 1874008195}
-  wall: {fileID: 11400000, guid: 1e0d6f52ce214a74e8361bf3b458e7b2, type: 2}
-  destination: {fileID: 11400000, guid: 4cccbd8be12c1ff41a3494a74c12c0bd, type: 2}
-  spawner: {fileID: 11400000, guid: 30944e5632cc6c247b1f088b21472ac3, type: 2}
+  contentTypes: {fileID: 11400000, guid: 78a814952ba94e04da3e8a1d9ace62f9, type: 2}
 --- !u!1 &1874008194
 GameObject:
   m_ObjectHideFlags: 0
@@ -346,8 +344,13 @@ MonoBehaviour:
   size: {x: 10, y: 10}
   tilePrefab: {fileID: 7197059111938922484, guid: 3eda11f95013e8f4283a697cd863d9bd,
     type: 3}
-  destination: {fileID: 11400000, guid: 4cccbd8be12c1ff41a3494a74c12c0bd, type: 2}
+  contentTypes: {fileID: 11400000, guid: 78a814952ba94e04da3e8a1d9ace62f9, type: 2}
   paths: {fileID: 11400000, guid: 35d6f9ad6a3d3724e96a72b0138ffbca, type: 2}
+  enemyLayer:
+    serializedVersion: 2
+    m_Bits: 256
+  placementPoof: {fileID: 19800000, guid: a7a4c474937de3b4fbc9f81f1f9a6387, type: 3}
+  breakPoof: {fileID: 19800000, guid: 86cba624ba5a25c4b9638dff42dcdb2d, type: 3}
 --- !u!4 &1874008196
 Transform:
   m_ObjectHideFlags: 0
@@ -369,7 +372,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1874008194}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 19340baa3de0bbf459cccddd6cab3334, type: 3}
   m_Name: 

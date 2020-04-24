@@ -4,12 +4,8 @@ using UnityEngine;
 
 public class PlayerControls : MonoBehaviour
 {
-	[SerializeField]
-	Board board = default;
-
-	public TileContentType wall;
-	public TileContentType destination;
-	public TileContentType spawner;
+	public Board board = default;
+	public ContentTypes contentTypes;
 
 	Camera camera;
 	TileContentType selectedTileContent;
@@ -18,7 +14,7 @@ public class PlayerControls : MonoBehaviour
     void Start()
     {
         camera = GetComponent<Camera>();
-		selectedTileContent = wall;
+		selectedTileContent = contentTypes.wall;
     }
 
 	Ray TouchRay => camera.ScreenPointToRay(Input.mousePosition);
@@ -35,15 +31,19 @@ public class PlayerControls : MonoBehaviour
 		}
 
 		if (Input.GetKeyDown(KeyCode.Alpha1)) {
-			selectedTileContent = wall;
+			selectedTileContent = contentTypes.wall;
 		}
 
 		if (Input.GetKeyDown(KeyCode.Alpha2)) {
-			selectedTileContent = destination;
+			selectedTileContent = contentTypes.destination;
 		}
 
 		if (Input.GetKeyDown(KeyCode.Alpha3)) {
-			selectedTileContent = spawner;
+			selectedTileContent = contentTypes.spawner;
+		}
+
+		if (Input.GetKeyDown(KeyCode.Alpha4)) {
+			selectedTileContent = contentTypes.tower;
 		}
     }
 }

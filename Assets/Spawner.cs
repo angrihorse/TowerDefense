@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Spawner : MonoBehaviour
 {
-	public Tile tile;
+	[HideInInspector] public Tile tile;
 	public Enemy enemyPrefab;
 	public float spawnPeriod;
 	float timeSinceLastSpawn;
@@ -20,8 +20,7 @@ public class Spawner : MonoBehaviour
 		if (timeSinceLastSpawn > spawnPeriod) {
 			Enemy enemy = Instantiate(enemyPrefab);
 			enemy.prevTile = tile;
-			enemy.transform.localPosition = new Vector3(transform.position.x,
-			enemy.transform.localScale.y/2, transform.position.z);
+			enemy.transform.localPosition = new Vector3(transform.position.x, 0, transform.position.z);
 			timeSinceLastSpawn = 0;
 		}
     }

@@ -9,9 +9,14 @@ public class Enemy : MonoBehaviour
 	Tile nextTile;
 	bool moving;
 
+	[SerializeField]
+	float health;
+
 	[Range(0.1f, 3)]
 	public float tilesPerSecond;
 	float tilePercent;
+
+	public ParticleSystem poof;
 
 	void OnEnable() {
 		Board.onPathUpdate += TryMoving;
@@ -23,6 +28,13 @@ public class Enemy : MonoBehaviour
 
 	void Start() {
 		TryMoving();
+	}
+
+	public void Damage(float damage) {
+		health -= damage;
+		if (health < 0) {
+			Die();
+		}
 	}
 
 	void TryMoving() {
@@ -42,12 +54,21 @@ public class Enemy : MonoBehaviour
 		moving = false;
 
 		if (paths.destinations.Contains(nextTile)) {
-			Destroy(gameObject);
+			Die();
 		}
 
 		tilePercent = 0;
 		prevTile = nextTile;
 
 		TryMoving();
+	}
+
+	void Die() {
+		if (poof != null) {
+			ParticleSystem poofInstance = Instantiate(poof, transform.localPosition, Quaternion.identity);
+			Destroy(poofInstance.gameObject, poof.main.startLifetime.constant);
+		}
+
+		Destroy(gameObject);
 	}
 }

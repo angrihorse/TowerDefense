@@ -107,6 +107,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tile: {fileID: 0}
-  enemyPrefab: {fileID: 85028203344190745, guid: d990dc77e802a4f489024dde86e506ae,
+  enemyPrefab: {fileID: 6531043880800553252, guid: d990dc77e802a4f489024dde86e506ae,
     type: 3}
   spawnPeriod: 1
