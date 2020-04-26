@@ -11,18 +11,18 @@ public class Board : MonoBehaviour
 
 	public Vector2Int size;
 	public Tile tilePrefab;
-	public Tile[,] tiles;
-
 	public ContentTypes contentTypes;
-	public Paths paths;
 
-	public delegate void BoardStateChangeEvent();
-	public static event BoardStateChangeEvent onPathUpdate;
+	Tile[,] tiles;
+	public Paths paths;
 
 	public LayerMask enemyLayer;
 
 	public ParticleSystem placementPoof;
 	public ParticleSystem breakPoof;
+
+	public delegate void PathUpdateEvent();
+	public static event PathUpdateEvent onPathUpdate;
 
     // Start is called before the first frame update
     void Start()

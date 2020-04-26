@@ -43,7 +43,11 @@ public class PlayerControls : MonoBehaviour
 		}
 
 		if (Input.GetKeyDown(KeyCode.Alpha4)) {
-			selectedTileContent = contentTypes.tower;
+			selectedTileContent = contentTypes.laserTower;
+		}
+
+		if (Input.GetKeyDown(KeyCode.Alpha5)) {
+			selectedTileContent = contentTypes.mortarTower;
 		}
     }
 }

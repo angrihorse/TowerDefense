@@ -12,6 +12,8 @@ public class Tile : MonoBehaviour
 	TileContentType contentType;
 	GameObject contentInstance;
 
+	public ContentTypes contentTypes;
+
 	public TileContentType Content {
 		get => contentType;
 		set {
@@ -29,8 +31,12 @@ public class Tile : MonoBehaviour
 		}
 
 		contentType = content;
-		contentInstance = Instantiate(content.prefab, transform, true);
-		contentInstance.transform.localPosition = contentInstance.transform.localScale.y/2 * Vector3.back;
+		contentInstance = Instantiate(content.prefab, transform.position, Quaternion.identity);
+		contentInstance.transform.localPosition += contentInstance.transform.localScale.y/2 * Vector3.up;
+
+		if (contentType == contentTypes.spawner) {
+			contentInstance.GetComponent<Spawner>().tile = this;
+		}
 	}
 
 	public void Clear() {

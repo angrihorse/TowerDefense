@@ -6,22 +6,17 @@ public class Spawner : MonoBehaviour
 {
 	[HideInInspector] public Tile tile;
 	public Enemy enemyPrefab;
-	public float spawnPeriod;
-	float timeSinceLastSpawn;
+	public Vector2 spawnPeriodRange;
 
 	void Start() {
-		tile = transform.parent.gameObject.GetComponent<Tile>();
+		StartCoroutine(Spawn());
 	}
 
-    // Update is called once per frame
-    void Update()
-    {
-		timeSinceLastSpawn += Time.deltaTime;
-		if (timeSinceLastSpawn > spawnPeriod) {
-			Enemy enemy = Instantiate(enemyPrefab);
-			enemy.prevTile = tile;
-			enemy.transform.localPosition = new Vector3(transform.position.x, 0, transform.position.z);
-			timeSinceLastSpawn = 0;
-		}
-    }
+	IEnumerator Spawn() {
+		yield return new WaitForSeconds(UnityEngine.Random.Range(spawnPeriodRange.x, spawnPeriodRange.y));
+		Enemy enemy = Instantiate(enemyPrefab);
+		enemy.prevTile = tile;
+		enemy.transform.localPosition = new Vector3(transform.position.x, 0, transform.position.z);
+		StartCoroutine(Spawn());
+	}
 }

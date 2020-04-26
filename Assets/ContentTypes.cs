@@ -8,5 +8,6 @@ public class ContentTypes : ScriptableObject
 	public TileContentType wall;
 	public TileContentType destination;
 	public TileContentType spawner;
-	public TileContentType tower;
+	public TileContentType laserTower;
+	public TileContentType mortarTower;
 }

@@ -108,3 +108,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   position: {x: 0, y: 0}
+  contentTypes: {fileID: 11400000, guid: 78a814952ba94e04da3e8a1d9ace62f9, type: 2}

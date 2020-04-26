@@ -15,4 +15,5 @@ MonoBehaviour:
   wall: {fileID: 11400000, guid: 1e0d6f52ce214a74e8361bf3b458e7b2, type: 2}
   destination: {fileID: 11400000, guid: 4cccbd8be12c1ff41a3494a74c12c0bd, type: 2}
   spawner: {fileID: 11400000, guid: 30944e5632cc6c247b1f088b21472ac3, type: 2}
-  tower: {fileID: 11400000, guid: 180b07a8503a0cc42a669d9ad565b81e, type: 2}
+  laserTower: {fileID: 11400000, guid: 180b07a8503a0cc42a669d9ad565b81e, type: 2}
+  mortarTower: {fileID: 11400000, guid: 588abcd94ae277d41a9973ada88df931, type: 2}

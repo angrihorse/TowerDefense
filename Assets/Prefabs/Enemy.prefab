@@ -47,7 +47,7 @@ MonoBehaviour:
   paths: {fileID: 11400000, guid: 35d6f9ad6a3d3724e96a72b0138ffbca, type: 2}
   prevTile: {fileID: 0}
   health: 10
-  tilesPerSecond: 2
+  tilesPerSecond: 3
   poof: {fileID: 19800000, guid: 86cba624ba5a25c4b9638dff42dcdb2d, type: 3}
 --- !u!1 &8056283069371796399
 GameObject:

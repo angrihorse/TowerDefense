@@ -27,7 +27,9 @@ public class Enemy : MonoBehaviour
 	}
 
 	void Start() {
-		TryMoving();
+		if (paths.tileParent.Count != 0) {
+			TryMoving();
+		}
 	}
 
 	public void Damage(float damage) {
